@@ -1,0 +1,1 @@
+!function(){"use strict";console.log("this is an import");var o={name:"coan",age:25};console.log(o),o.name="coder",o.age=18,console.log(o),console.log("hello typescript with webpack【","rewrite-ts-web","】")}();

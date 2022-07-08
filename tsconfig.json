@@ -1,0 +1,27 @@
+{
+  /**
+   * tsconfig.json是ts编译器的配置文件，ts编译器可以根据它的信息来对代码进行编译
+   */
+  // "include": ["**/*"],
+  "compileOnSave": true, //在最顶层设置compileOnSave标记，可以让IDE在保存文件的时候根据tsconfig.json重新生成文件。
+  "exclude": ["node_modules", "bower_components", "jspm_packages"],
+  "extends": "./base.json",
+  // "files": ["./test00.ts"],
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ES2015",
+    "lib": ["DOM"],
+    "outDir": "./dist-tsc",
+    // "outFile": "./dest/final.js"
+    "allowJs": true,
+    "checkJs": true,
+    "removeComments": false,
+    "noEmit": false,
+    "noEmitOnError": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
+  }
+}
