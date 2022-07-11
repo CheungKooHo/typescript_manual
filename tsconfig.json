@@ -5,8 +5,8 @@
   // "include": ["**/*"],
   "compileOnSave": true, //在最顶层设置compileOnSave标记，可以让IDE在保存文件的时候根据tsconfig.json重新生成文件。
   "exclude": ["node_modules", "bower_components", "jspm_packages"],
-  "extends": "./base.json",
-  // "files": ["./test00.ts"],
+  // "extends": "./base.json",
+  "files": ["generics.ts"],
   "compilerOptions": {
     "target": "ES2015",
     "module": "ES2015",

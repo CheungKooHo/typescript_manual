@@ -3,8 +3,8 @@
  * @Author: Coan
  * @Date: 2022-07-04 17:21:22
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-08 10:36:43
- * @FilePath: /TypeScript/dist-tsc/test00.js
+ * @LastEditTime: 2022-07-06 15:53:34
+ * @FilePath: /TypeScript/variables.ts
  * @Description:
  */
 console.log('hello typescript');
