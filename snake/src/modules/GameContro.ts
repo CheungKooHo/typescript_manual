@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 16:55:17
+ * @LastEditTime: 2022-07-12 17:36:26
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -75,7 +75,6 @@ class GameContro {
     try {
       this.snake.X = X;
       this.snake.Y = Y;
-      this.snake.moveBody();
       this.checkWall();
     } catch (error) {
       alert(error.message);

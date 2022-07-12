@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 12:00:24
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 17:21:33
+ * @LastEditTime: 2022-07-12 17:34:43
  * @FilePath: /typescript_manual/snake/src/modules/Snake.ts
  * @Description:
  */
@@ -23,13 +23,16 @@ class Snake {
   }
   set X(val) {
     if (this.X === val) return;
+    this.moveBody();
     this.head.style.left = val + 'px';
   }
   set Y(val) {
     if (this.Y === val) return;
+    this.moveBody();
     this.head.style.top = val + 'px';
   }
   addBodies() {
+    console.log(this.bodies.length);
     this.element.insertAdjacentHTML('beforeend', '<div></div>');
   }
   moveBody() {
