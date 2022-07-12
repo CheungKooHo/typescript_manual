@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 12:00:24
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 15:49:07
+ * @LastEditTime: 2022-07-12 17:21:33
  * @FilePath: /typescript_manual/snake/src/modules/Snake.ts
  * @Description:
  */
@@ -23,26 +23,22 @@ class Snake {
   }
   set X(val) {
     if (this.X === val) return;
-    // if (val >= 290 || val <= 0) {
-    //   throw new Error('靠近墙壁');
-    // }
-    // if (val > 290) {
-    //   val = 0;
-    // }
-    // if (val < 0) {
-    //   val = 290;
-    // }
     this.head.style.left = val + 'px';
   }
   set Y(val) {
     if (this.Y === val) return;
-    // if (val < 0 || val > 290) {
-    //   throw new Error('靠近墙壁');
-    // }
     this.head.style.top = val + 'px';
   }
   addBodies() {
     this.element.insertAdjacentHTML('beforeend', '<div></div>');
+  }
+  moveBody() {
+    for (let i = this.bodies.length - 1; i > 0; i--) {
+      (this.bodies[i] as HTMLElement).style.left =
+        (this.bodies[i - 1] as HTMLElement).offsetLeft + 'px';
+      (this.bodies[i] as HTMLElement).style.top =
+        (this.bodies[i - 1] as HTMLElement).offsetTop + 'px';
+    }
   }
 }
 export default Snake;

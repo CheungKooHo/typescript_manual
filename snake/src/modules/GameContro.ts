@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 16:12:31
+ * @LastEditTime: 2022-07-12 16:55:17
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -75,6 +75,7 @@ class GameContro {
     try {
       this.snake.X = X;
       this.snake.Y = Y;
+      this.snake.moveBody();
       this.checkWall();
     } catch (error) {
       alert(error.message);
@@ -115,7 +116,6 @@ class GameContro {
   }
   chectEat(_X: number, _Y: number) {
     if (_X === this.food.X && _Y === this.food.Y) {
-      console.log('isAte');
       this.food.change();
       this.scorePanel.addScore();
       this.snake.addBodies();
