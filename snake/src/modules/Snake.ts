@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 12:00:24
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 14:51:34
+ * @LastEditTime: 2022-07-12 15:49:07
  * @FilePath: /typescript_manual/snake/src/modules/Snake.ts
  * @Description:
  */
@@ -22,9 +22,23 @@ class Snake {
     return this.head.offsetTop;
   }
   set X(val) {
+    if (this.X === val) return;
+    // if (val >= 290 || val <= 0) {
+    //   throw new Error('靠近墙壁');
+    // }
+    // if (val > 290) {
+    //   val = 0;
+    // }
+    // if (val < 0) {
+    //   val = 290;
+    // }
     this.head.style.left = val + 'px';
   }
   set Y(val) {
+    if (this.Y === val) return;
+    // if (val < 0 || val > 290) {
+    //   throw new Error('靠近墙壁');
+    // }
     this.head.style.top = val + 'px';
   }
   addBodies() {

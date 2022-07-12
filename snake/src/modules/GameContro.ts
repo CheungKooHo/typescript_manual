@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 15:20:07
+ * @LastEditTime: 2022-07-12 15:58:36
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -16,6 +16,7 @@ class GameContro {
   direction: string = '';
   isBegin: boolean = false;
   isLive: boolean = true;
+  isCheckWall: boolean = true;
   constructor() {
     this.food = new Food();
     this.scorePanel = new ScorePanel();
@@ -27,6 +28,7 @@ class GameContro {
   keydownHandler(event) {
     if (event.key === ' ' && !this.isBegin) {
       this.isBegin = !this.isBegin;
+      this.isLive = true;
       this.run();
     } else if (event.key === ' ' && this.isBegin) {
       this.isBegin = !this.isBegin;
@@ -46,41 +48,68 @@ class GameContro {
     }
   }
   run() {
+    let X = this.snake.X;
+    let Y = this.snake.Y;
     switch (this.direction) {
       case 'ArrowDown':
       case 'Down':
-        this.snake.Y += 10;
+        Y += 10;
         break;
       case 'ArrowLeft':
       case 'Left':
-        this.snake.X -= 10;
+        X -= 10;
         break;
       case 'ArrowUp':
       case 'Up':
-        this.snake.Y -= 10;
+        Y -= 10;
         break;
       case 'ArrowRight':
       case 'Right':
-        this.snake.X += 10;
+        X += 10;
         break;
       default:
-        this.snake.X += 10;
+        X += 10;
         break;
     }
-    if (this.snake.X >= 290) {
+    try {
+      this.snake.X = X;
+      this.snake.Y = Y;
+      this.checkWall();
+    } catch (error) {
+      alert(error.message);
       this.snake.X = 0;
-    }
-    if (this.snake.X < 0) {
-      this.snake.X = 290;
-    }
-    if (this.snake.Y >= 290) {
       this.snake.Y = 0;
-    }
-    if (this.snake.Y < 0) {
-      this.snake.Y = 290;
+      this.isLive = false;
+      this.isBegin = false;
+      this.direction = '';
     }
     if (this.isBegin && this.isLive) {
       setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
+    }
+  }
+  checkWall() {
+    if (!this.isCheckWall) {
+      if (this.snake.X >= 290) {
+        this.snake.X = 0;
+      }
+      if (this.snake.X < 0) {
+        this.snake.X = 290;
+      }
+      if (this.snake.Y >= 290) {
+        this.snake.Y = 0;
+      }
+      if (this.snake.Y < 0) {
+        this.snake.Y = 290;
+      }
+    } else {
+      if (
+        this.snake.X < 0 ||
+        this.snake.X > 290 ||
+        this.snake.Y < 0 ||
+        this.snake.Y > 290
+      ) {
+        throw new Error('嚯，喝多少哇这，都撞死了！');
+      }
     }
   }
   test() {
