@@ -2,23 +2,17 @@
  * @Author: Coan
  * @Date: 2022-07-11 16:21:54
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 12:14:17
+ * @LastEditTime: 2022-07-12 13:39:08
  * @FilePath: /typescript_manual/snake/src/index.ts
  * @Description:
  */
 import './index.less';
-import Food from './modules/Food';
-import ScorePanel from './modules/ScorePanel';
-import Snake from './modules/Snake';
+import GameContro from './modules/GameContro';
 
-// 测试代码
-const food = new Food();
-const scorePanel = new ScorePanel(7, 5);
-const snake = new Snake();
+const gameContro = new GameContro();
+
+gameContro.init();
 setInterval(() => {
-  scorePanel.addScore();
-  food.change();
-  snake.addBodies();
-  snake.X += 10;
-  snake.Y += 10;
+  // console.log(gameContro.direction);
 }, 1000);
+// gameContro.test();
