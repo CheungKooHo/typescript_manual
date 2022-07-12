@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 14:38:11
+ * @LastEditTime: 2022-07-12 15:15:13
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -10,21 +10,27 @@ import Food from './Food';
 import ScorePanel from './ScorePanel';
 import Snake from './Snake';
 class GameContro {
-  Food: Food;
-  ScorePanel: ScorePanel;
+  food: Food;
+  scorePanel: ScorePanel;
   snake: Snake;
   direction: string = '';
+  isBegin: boolean = false;
   constructor() {
-    this.Food = new Food();
-    this.ScorePanel = new ScorePanel();
+    this.food = new Food();
+    this.scorePanel = new ScorePanel();
     this.snake = new Snake();
   }
   init() {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
-    setInterval(this.run.bind(this), 1000);
+    // this.run();
   }
   keydownHandler(event) {
-    console.log(event.key);
+    if (event.key === ' ' && !this.isBegin) {
+      this.isBegin = !this.isBegin;
+      this.run();
+    } else if (event.key === ' ' && this.isBegin) {
+      this.isBegin = !this.isBegin;
+    }
     let keysArr = [
       'ArrowDown',
       'ArrowLeft',
@@ -60,6 +66,9 @@ class GameContro {
       default:
         this.snake.X += 10;
         break;
+    }
+    if (this.isBegin) {
+      setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
     }
   }
   test() {
