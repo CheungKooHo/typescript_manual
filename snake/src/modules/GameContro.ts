@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 17:36:26
+ * @LastEditTime: 2022-07-12 18:01:59
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -26,6 +26,8 @@ class GameContro {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
   }
   keydownHandler(event) {
+    if (this.direction === 'ArrowDown' || this.direction === 'Down') {
+    }
     if (event.key === ' ' && !this.isBegin) {
       this.isBegin = !this.isBegin;
       this.isLive = true;
@@ -83,6 +85,7 @@ class GameContro {
       this.isLive = false;
       this.isBegin = false;
       this.direction = '';
+      // this.snake.element.removeChild()
     }
     if (this.isBegin && this.isLive) {
       setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
