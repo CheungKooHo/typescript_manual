@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-11 16:18:30
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-11 16:18:39
+ * @LastEditTime: 2022-07-11 17:35:51
  * @FilePath: /typescript_manual/snake/webpack.config.js
  * @Description:
  */
@@ -15,7 +15,7 @@ module.exports = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist-webpack'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     environment: {
       arrowFunction: false
@@ -44,6 +44,27 @@ module.exports = {
           }
         }, 'ts-loader'],
         exclude: /node-modules/
+      },
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  "postcss-preset-env",
+                  // {
+                  //   browsers: 'last 2 versions'
+                  // }
+                ]
+              }
+            }
+          },
+          "less-loader"
+        ]
       }
     ]
   },
