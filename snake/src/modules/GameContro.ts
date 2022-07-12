@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 13:40:13
+ * @LastEditTime: 2022-07-12 14:38:11
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -21,6 +21,7 @@ class GameContro {
   }
   init() {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
+    setInterval(this.run.bind(this), 1000);
   }
   keydownHandler(event) {
     console.log(event.key);
@@ -36,6 +37,29 @@ class GameContro {
     ];
     if (keysArr.indexOf(event.key) + 1) {
       this.direction = event.key;
+    }
+  }
+  run() {
+    switch (this.direction) {
+      case 'ArrowDown':
+      case 'Down':
+        this.snake.Y += 10;
+        break;
+      case 'ArrowLeft':
+      case 'Left':
+        this.snake.X -= 10;
+        break;
+      case 'ArrowUp':
+      case 'Up':
+        this.snake.Y -= 10;
+        break;
+      case 'ArrowRight':
+      case 'Right':
+        this.snake.X += 10;
+        break;
+      default:
+        this.snake.X += 10;
+        break;
     }
   }
   test() {

@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 12:00:24
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 12:13:02
+ * @LastEditTime: 2022-07-12 14:21:41
  * @FilePath: /typescript_manual/snake/src/modules/Snake.ts
  * @Description:
  */
