@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 15:58:36
+ * @LastEditTime: 2022-07-12 16:12:31
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -71,6 +71,7 @@ class GameContro {
         X += 10;
         break;
     }
+    this.chectEat(X, Y);
     try {
       this.snake.X = X;
       this.snake.Y = Y;
@@ -110,6 +111,14 @@ class GameContro {
       ) {
         throw new Error('嚯，喝多少哇这，都撞死了！');
       }
+    }
+  }
+  chectEat(_X: number, _Y: number) {
+    if (_X === this.food.X && _Y === this.food.Y) {
+      console.log('isAte');
+      this.food.change();
+      this.scorePanel.addScore();
+      this.snake.addBodies();
     }
   }
   test() {
