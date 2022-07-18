@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 18:01:59
+ * @LastEditTime: 2022-07-15 14:22:56
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -45,8 +45,9 @@ class GameContro {
       'Up',
       'Right',
     ];
-    if (keysArr.indexOf(event.key) + 1) {
-      this.direction = event.key;
+    let _Direction = event.key;
+    if (keysArr.indexOf(_Direction) + 1) {
+      this.direction = _Direction;
     }
   }
   run() {
