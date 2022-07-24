@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-24 12:30:16
+ * @LastEditTime: 2022-07-24 15:01:07
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -80,12 +80,15 @@ class GameContro {
       this.checkWall();
     } catch (error) {
       alert(error.message);
+
+      for (let index = 1; index < this.snake.bodies.length; index++) {
+        this.snake.element.removeChild(this.snake.bodies[index]);
+      }
       this.snake.X = 0;
       this.snake.Y = 0;
       this.isLive = false;
       this.isBegin = false;
       this.direction = '';
-      this.snake.element.innerHTML = '<div id="head"></div>';
     }
     if (this.isBegin && this.isLive) {
       setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
@@ -127,8 +130,7 @@ class GameContro {
     for (let index = 1; index < this.snake.bodies.length; index++) {
       let body = this.snake.bodies[index] as HTMLElement;
       if (this.snake.X === body.offsetLeft && this.snake.Y === body.offsetTop) {
-        console.log(999);
-        // throw new Error('嚯，喝多少哇这，都撞死了！');
+        throw new Error('嚯，喝多少哇这，都撞死了！');
       }
     }
   }
