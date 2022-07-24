@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 12:00:24
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 19:01:17
+ * @LastEditTime: 2022-07-24 12:30:08
  * @FilePath: /typescript_manual/snake/src/modules/Snake.ts
  * @Description:
  */
@@ -50,10 +50,11 @@ class Snake {
   }
   moveBody() {
     for (let i = this.bodies.length - 1; i > 0; i--) {
-      (this.bodies[i] as HTMLElement).style.left =
-        (this.bodies[i - 1] as HTMLElement).offsetLeft + 'px';
-      (this.bodies[i] as HTMLElement).style.top =
-        (this.bodies[i - 1] as HTMLElement).offsetTop + 'px';
+      let X = (this.bodies[i - 1] as HTMLElement).offsetLeft;
+      let Y = (this.bodies[i - 1] as HTMLElement).offsetTop;
+
+      (this.bodies[i] as HTMLElement).style.left = X + 'px';
+      (this.bodies[i] as HTMLElement).style.top = Y + 'px';
     }
   }
 }

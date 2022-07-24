@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-11 16:21:54
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 14:21:15
+ * @LastEditTime: 2022-07-24 11:54:55
  * @FilePath: /typescript_manual/snake/src/index.ts
  * @Description:
  */
@@ -12,7 +12,3 @@ import GameContro from './modules/GameContro';
 const gameContro = new GameContro();
 
 gameContro.init();
-// setInterval(() => {
-//   console.log(gameContro.direction);
-// }, 1000);
-// gameContro.test();

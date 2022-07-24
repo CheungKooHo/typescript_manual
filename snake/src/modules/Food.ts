@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 11:57:32
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-12 11:57:33
+ * @LastEditTime: 2022-07-24 11:56:04
  * @FilePath: /typescript_manual/snake/src/modules/Food.ts
  * @Description:
  */
@@ -19,7 +19,7 @@ class Food {
     return this.element.offsetTop;
   }
   change() {
-    this.element.style.left =
+    this.element.style.top =
       (Math.round(Math.random() * 29) * 10).toString() + 'px';
     this.element.style.left =
       (Math.round(Math.random() * 29) * 10).toString() + 'px';

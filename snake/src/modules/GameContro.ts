@@ -2,7 +2,7 @@
  * @Author: Coan
  * @Date: 2022-07-12 13:19:10
  * @LastEditors: Coan
- * @LastEditTime: 2022-07-15 14:22:56
+ * @LastEditTime: 2022-07-24 12:30:16
  * @FilePath: /typescript_manual/snake/src/modules/GameContro.ts
  * @Description:
  */
@@ -26,8 +26,6 @@ class GameContro {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
   }
   keydownHandler(event) {
-    if (this.direction === 'ArrowDown' || this.direction === 'Down') {
-    }
     if (event.key === ' ' && !this.isBegin) {
       this.isBegin = !this.isBegin;
       this.isLive = true;
@@ -74,8 +72,9 @@ class GameContro {
         X += 10;
         break;
     }
-    this.chectEat(X, Y);
+    this.checkEat(X, Y);
     try {
+      this.cheakBody();
       this.snake.X = X;
       this.snake.Y = Y;
       this.checkWall();
@@ -86,10 +85,17 @@ class GameContro {
       this.isLive = false;
       this.isBegin = false;
       this.direction = '';
-      // this.snake.element.removeChild()
+      this.snake.element.innerHTML = '<div id="head"></div>';
     }
     if (this.isBegin && this.isLive) {
       setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
+    }
+  }
+  checkEat(_X: number, _Y: number) {
+    if (_X === this.food.X && _Y === this.food.Y) {
+      this.food.change();
+      this.scorePanel.addScore();
+      this.snake.addBodies();
     }
   }
   checkWall() {
@@ -117,25 +123,14 @@ class GameContro {
       }
     }
   }
-  chectEat(_X: number, _Y: number) {
-    if (_X === this.food.X && _Y === this.food.Y) {
-      this.food.change();
-      this.scorePanel.addScore();
-      this.snake.addBodies();
+  cheakBody() {
+    for (let index = 1; index < this.snake.bodies.length; index++) {
+      let body = this.snake.bodies[index] as HTMLElement;
+      if (this.snake.X === body.offsetLeft && this.snake.Y === body.offsetTop) {
+        console.log(999);
+        // throw new Error('嚯，喝多少哇这，都撞死了！');
+      }
     }
-  }
-  test() {
-    // 测试代码
-    const food = new Food();
-    const scorePanel = new ScorePanel(7, 5);
-    const snake = new Snake();
-    setInterval(() => {
-      scorePanel.addScore();
-      food.change();
-      snake.addBodies();
-      snake.X += 10;
-      snake.Y += 10;
-    }, 1000);
   }
 }
 export default GameContro;
